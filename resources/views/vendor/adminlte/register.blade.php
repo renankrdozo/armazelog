@@ -14,6 +14,14 @@
         </div>
 
         <div class="register-box-body">
+            <div class="login-box-body">
+              <div class="container">
+                  <div class="row">
+                    <div class="col-xs-400  col-sm-400">
+                      <img src="img/logo.jpg" alt="imagem 02" class="img-rounded img-responsive"/>
+                </div>
+              </div>
+           </div>
             <p class="login-box-msg">{{ trans('adminlte::adminlte.register_message') }}</p>
             <form action="{{ url(config('adminlte.register_url', 'register')) }}" method="post">
                 {!! csrf_field() !!}

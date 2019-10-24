@@ -22,6 +22,7 @@
                 <div class="panel-body">                                    
                     <form action="{{route('transporte.salvar')}}" method="POST">
                         {{ csrf_field() }}
+
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" name="nome" class="form-control" placeholder="Nome do transporte">
@@ -31,6 +32,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="form-group {{ $errors->has('cnpj') ? 'has-error' : '' }}">
                             <label for="email">CNPJ</label>
                             <input type="text" name="cnpj" class="form-control" placeholder="CNPJ do transporte">
@@ -40,6 +42,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="form-group{{ $errors->has('endereco')? 'has-error' : '' }}">
                             <label for="endereco">Endereço</label>
                             <input type="text" name="endereco" class="form-control" placeholder="Endereço do Transporte">
@@ -49,6 +52,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="form-group{{ $errors->has('endereco')? 'has-error' : '' }}">
                             <label for="endereco">Cidade</label>
                             <input type="text" name="cidade" class="form-control" placeholder="Cidade">
@@ -58,6 +62,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="form-group{{ $errors->has('cep')? 'has-error' : '' }}">
                             <label for="endereco">Cep</label>
                             <input type="text" name="cep" class="form-control" placeholder="Cep do transporte">
@@ -67,6 +72,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="form-group{{ $errors->has('email')? 'has-error' : '' }}">
                             <label for="email">E-mail</label>
                             <input type="text" name="email" class="form-control" placeholder="E-mail do Transporte">
@@ -76,6 +82,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="form-group{{ $errors->has('contato')? 'has-error' : '' }}">
                             <label for="contato">Contato</label>
                             <input type="text" name="contato" class="form-control" placeholder="Contato do Transporte">
@@ -85,6 +92,7 @@
                                 </span>
                             @endif
                         </div>
+                        
                         <button class="btn btn-info">Adicionar</button>
                         <a class="btn btn-info" href="{{route('home')}}">Voltar ao Menu</a>
                         <a class="btn btn-info" href="{{route('transporte.listartransporte')}}">listar </a>

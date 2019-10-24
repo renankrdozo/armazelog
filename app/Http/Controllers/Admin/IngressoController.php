@@ -26,7 +26,6 @@ class IngressoController extends Controller
         return view('veiculo.cadastrar', ['transportes' => Transporte::all(['id', 'nome'])]);
     }
 */
-
     public function listar()
     {
     	return view('ingresso.listar');

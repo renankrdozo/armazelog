@@ -17,7 +17,7 @@
     <h1>Cadastro de Veiculos </h1>
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form action="{{route('ingresso.salvar')}}" method="post">

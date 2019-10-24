@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Armazelog',
+    'title' => '',
 
     'title_prefix' => '',
 
@@ -31,7 +31,7 @@ return [
     */
 
     'logo' => '<b>Armazelog</b>',
-
+    'icon'        => 'img/logo.jpg',
     'logo_mini' => '<b>Amz</b>',
 
     /*

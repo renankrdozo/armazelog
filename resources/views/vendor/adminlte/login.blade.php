@@ -5,16 +5,22 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
     @yield('css')
 @stop
-
 @section('body_class', 'login-page')
-
 @section('body')
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b></b>') !!}</a>
         </div>
         <!-- /.login-logo -->
-        <div class="login-box-body">
+            <div class="login-box-body">
+              <div class="container">
+                  <div class="row">
+                    <div class="col-xs-400  col-sm-400">
+                      <img src="img/logo.jpg" alt="imagem 02" class="img-rounded img-responsive"/>
+                </div>
+              </div>
+           </div>
+
             <p class="login-box-msg">{{ trans('adminlte::adminlte.login_message') }}</p>
             <form action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
                 {!! csrf_field() !!}

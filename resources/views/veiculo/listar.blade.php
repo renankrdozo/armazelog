@@ -6,7 +6,7 @@
     <h1>Listando Transporte </h1>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <p>
@@ -42,7 +42,6 @@
                                     <td>{{ $c->transporte }}</td>
 
                                     <td>
-                                        <a class="btn btn-default" href="">Detalhe</a>
                                         <a class="btn btn-default" href="{{route('veiculo.editar',$c->id)}}">Editar</a>
                                         <a class="btn btn-danger"
                                            href="javascript:(confirm('Deletar esse registro?') ? window.location.href='{{route('veiculo.editar',$c->id)}}' : false)">Deletar</a>
