@@ -32,11 +32,10 @@ Route::get('admin', 'Admin\IngressoController@ingresso')->name('admin.ingresso')
 Route::get('/veiculo/cadastrar','Admin\VeiculoController@cadastrar')->name('veiculo.cadastrar');
 //rota que salva os dados no banco na tabela de cadastro de transportadoras
 Route::post('/veiculo/salvar','Admin\VeiculoController@salvar')->name('veiculo.salvar');
-
 //rota que chama a view para efetuar o cadastro no banco de dados
 Route::get('/veiculo/editar/{id_veiculo}','Admin\VeiculoController@editar')->name('veiculo.editar');
 //rota para chamar a view de edição de transportadoras
-Route::get('/veiculo/atualizar/{id_veiculo}','Admin\VeiculoController@atualizar')->name('veiculo.atualizar');
+Route::post('/veiculo/atualizar/{id_veiculo}','Admin\VeiculoController@atualizar')->name('veiculo.atualizar');
 //rota para chamar a view de edição de transportadoras
 Route::get('/veiculo/deletar/{id_veiculo}','Admin\VeiculoController@deletar')->name('veiculo.deletar');
 //rota que salva os dados no banco na tabela de cadastro de transportadoras
@@ -48,7 +47,7 @@ Route::get('listar','Admin\VeiculoController@listar')->name('veiculo.listar');
 //rota chamar a view de cadastro de ingresso
 Route::get('ingresso','Admin\IngressoController@cadastrar')->name('ingresso.cadastrar');
 Route::get('ingresso/listar','Admin\IngressoController@listar')->name('ingresso.listar');
-Route::post('/ingresso/salvar','Admin\IngressoController@listar')->name('ingresso.salvar');
+Route::post('/ingresso/salvar','Admin\IngressoController@salvar')->name('ingresso.salvar');
 
 
 

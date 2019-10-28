@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
 use App\Http\Controllers\Controller;
 use App\Transporte;
 use App\Veiculo;
@@ -80,11 +79,22 @@ class TransporteController extends Controller
         $transporte->email = $request->email;
         $transporte->contato = $request->contato;
         $transporte->save();
-        return view('transporte.listartransporte')->with('transporte', $transporte);
+        $transportes = Transporte::paginate(20);
+        return view('transporte.listartransporte', compact('transportes'))->with('transporte', $transporte);
     }
 
     public function deletar($id_transportes)
     {
+        if(count(Veiculo::where('transporte_id',$id_transportes)->get()) > 0){
+            \Session::flash('flash_message', [
+                'msg' => "Existem veículos cadastrados nessa transportadora!",
+                'class' => "alert-error"
+            ]);
+
+            $transportes = Transporte::paginate(20);
+            return view('transporte.listartransporte', compact('transportes'));
+        }
+
         $transporte = transporte::find($id_transportes);
         // Excluindo este objeto
         $transporte->delete();
@@ -92,7 +102,12 @@ class TransporteController extends Controller
         $mensagem = "Produto excluído com sucesso!";
         // Capturando objetos para enviar a view produto.pesquisar
         $transporte = transporte::all();
+        \Session::flash('flash_message', [
+            'msg' => "Transportadora excluída com com sucesso!",
+            'class' => "alert-success"
+        ]);
         // Retornando a view produto.pesquisar
-        return view('transporte.listartransporte')->with('transporte', $transporte);
+        $transportes = Transporte::paginate(20);
+        return view('transporte.listartransporte', compact('transportes'))->with('transporte', $transporte);
     }
 }

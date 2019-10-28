@@ -3,6 +3,17 @@
 @section('content_header')
 @stop
 @section('content')
+@if(Session::has('flash_message'))
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div align="center" class="alert {{ Session::get('flash_message')['class'] }}">
+                        {{ Session::get('flash_message')['msg'] }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <h1>Listando Transporte </h1>
     <div class="container">
         <div class="row">
@@ -39,12 +50,12 @@
                                     <td>{{ $c->modelo }}</td>
                                     <td>{{ $c->peso }}</td>
                                     <td>{{ $c->ano }}</td>
-                                    <td>{{ $c->transporte }}</td>
+                                    <td>{{ $c->transporte_nome }}</td>
 
                                     <td>
                                         <a class="btn btn-default" href="{{route('veiculo.editar',$c->id)}}">Editar</a>
                                         <a class="btn btn-danger"
-                                           href="javascript:(confirm('Deletar esse registro?') ? window.location.href='{{route('veiculo.editar',$c->id)}}' : false)">Deletar</a>
+                                           href="javascript:(confirm('Deletar esse registro?') ? window.location.href='{{route('veiculo.deletar',$c->id)}}' : false)">Deletar</a>
                                     </td>
                                 </tr>
 
