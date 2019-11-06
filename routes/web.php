@@ -44,7 +44,7 @@ Route::post('/veiculo/filtro','Admin\VeiculoController@salvar')->name('veiculo.f
 
 //ROTAS REFERENTES AO CADASTRO DE INGRESSO NO BANCO
 //rota chamar a view de cadastro de ingresso
-Route::get('/ingresso/ingresso','Admin\IngressoController@cadastrar')->name('ingresso.cadastrar');
+Route::get('/ingresso','Admin\IngressoController@cadastrar')->name('ingresso.cadastrar');
 Route::get('/ingresso/listar','Admin\IngressoController@listar')->name('ingresso.listar');
 Route::post('/ingresso/salvar','Admin\IngressoController@salvar')->name('ingresso.salvar');
 Route::post('/ingresso/filtro','Admin\VeiculoController@salvar')->name('ingresso.filtro');
