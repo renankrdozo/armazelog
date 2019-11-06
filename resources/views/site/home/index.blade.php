@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Armazelog</title>
-
+        <title> Armazelog</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -81,9 +80,18 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Armazelog
+                   Armazelog
                 </div>
-
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xs-400  col-sm-400">
+                      <img src="img/logo.jpg" alt="imagem 02" class="img-rounded img-responsive"/>
+                    </div>
+                  </div>
+                </div> 
+                <a>
+                    
+                </a>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Transporte;
 use App\Veiculo;
+use App\Entrada;
 use Illuminate\Http\Request;
 
 class VeiculoController extends Controller
@@ -21,11 +21,29 @@ class VeiculoController extends Controller
         return view('veiculo.cadastrar', ['transportes' => Transporte::all(['id', 'nome'])]);
     }
 
+
+
+
+
     public function listar()
     {
-        $veiculo = Veiculo::paginate(20);
+        $veiculo = Veiculo::paginate(5);
+        
+        foreach ($veiculo as $item) {
+            $item->transporte_nome = Transporte::find($item->transporte_id)->nome;
+        }
+
         return view('veiculo.listar', compact('veiculo'));
     }
+
+
+
+
+
+
+
+
+
     //funçao que esta salvando os dados no banco na view
     //de cadastro de transportadoras
 
@@ -38,8 +56,120 @@ class VeiculoController extends Controller
             'msg' => "Dados cadastrados comsucesso!",
             'class' => "alert-success"
         ]);
-        return redirect()->route('veiculo.listar');
+
+        $veiculo = Veiculo::paginate(20);
+        foreach ($veiculo as $item) {
+            $item->transporte_nome = Transporte::find($item->transporte_id)->nome;
+        }
+
+        return view('veiculo.listar', compact('veiculo'));
     }
+
+     
+
+
+
+
+
+
+
+
+     public function editar($id_veiculo)
+    {
+        return view('veiculo.editar', ['veiculo' => Veiculo::findOrFail($id_veiculo)]);
+    }
+
+
+
+
+
+
+
+
+
+    public function atualizar(Request $request, $id_veiculo)
+    {
+        //var_dump($id_veiculo);
+        $veiculo = veiculo::find($$id_veiculo);
+        $veiculo->placa = $request->placa;
+        $veiculo->tipo = $request->tipo;
+        $veiculo->marca = $request->marca;
+        $veiculo->modelo = $request->modelo;
+        $veiculo->peso = $request->peso;
+        $veiculo->ano = $request->ano;
+        $veiculo->save();
+        $veiculo = Transporte::paginate(5);
+        return view('veiculo.listar', compact('veiculo'))->with('veiculo', $veiculo);
+        
+    }
+
+
+
+
+
+
+
+    public function deletar($id_veiculo)
+    {
+        if(count(Entrada::where('veiculo_id',$id_veiculo)->get()) > 0){
+            \Session::flash('flash_message', [
+                'msg' => "Existem entradas cadastrados nesse veículo!",
+                'class' => "alert-error"
+            ]);
+
+           $veiculo = Veiculo::paginate(5);
+            foreach ($veiculo as $item) {
+                $item->transporte_nome = Transporte::find($item->transporte_id)->nome;
+            }
+
+            return view('veiculo.listar', compact('veiculo'));
+        }
+
+        $veiculo = veiculo::find($id_veiculo);
+        // Excluindo este objeto
+        $veiculo->delete();
+        // Criando uma mensagem para ser enviada a view produto.pesquisar
+        \Session::flash('flash_message', [
+            'msg' => "Veículo excluído com com sucesso!",
+            'class' => "alert-success"
+        ]);
+        // Retornando a view produto.pesquisar
+        $veiculo = Veiculo::paginate(20);
+        foreach ($veiculo as $item) {
+            $item->transporte_nome = Transporte::find($item->transporte_id)->nome;
+        }
+
+        return view('veiculo.listar', compact('veiculo'));
+    }
+
+
+     public function filtro(Request $request)
+    {      
+         //dd($request->all());
+       $dataForm = $request->all();
+       $dataForm = $request->except('_token');
+       $veiculos = $Veiculo ->filtro($dataForm, $this->totalPage);
+      // $type = $veiculos->tipe();
+       return view('veiculo.listar', compact('veiculo'));
+
+    }
+ /**     public function filtro(Request $request)
+    {
+  $id = $request->get('id');
+  $placa = $request->get('placa');
+  $marca = $request->get('marca');
+  $transporte = $request->get('transporte');
+
+  $veiculo = veiculo::orderBy('id', 'DESC')
+        ->id($id)
+        ->placa($placa)
+        ->marca($marca)
+        ->transporte($transporte);
+
+    return view('veiculo.listar', compact('veiculo'));
+
+}
+**/
 
 }
  

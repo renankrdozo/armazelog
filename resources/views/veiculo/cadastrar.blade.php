@@ -27,6 +27,7 @@
                         <div class="form-group"{{ $errors->has('transporte')?'has-error' : '' }}>
                             <label for="transporte_id">Transporte</label>
                             <select name="transporte_id" id="transporte_id" class="form-control">
+                             <option value="#">-- Seleciona a Transportadora --</option>        
                                     @foreach($transportes as $transporte)
                              <option value="{{$transporte->id}}">{{$transporte->nome}}</option>
                                     @endforeach
@@ -46,8 +47,8 @@
                             <div class="form-group {{ $errors->has('tipo') ? 'has-error' : '' }}">
                                 <label for="tipo">Tipo</label>
                                 <select type="text" name="tipo" class="form-control">
+                                <option value="#">-- Seleciona o Tipo --</option>
                                 <option>Cavalo</option>
-                                <option>Carreta</option>
                                 @if($errors->has('tipo'))
                                     <span class="help-block">
                                     <strong>{{ $errors->first('tipo') }}</strong>
@@ -57,12 +58,20 @@
                             </div>
                             <div class="form-group {{ $errors->has('marca') ? 'has-error' : '' }}">
                                 <label for="marca">Marca</label>
-                                <input type="text" name="marca" class="form-control" placeholder="Marca">
+                                <select type="text" name="marca" class="form-control" placeholder="Marca">
+                                <option value="#">-- Seleciona a Marca --</option>
+                                <option>Scania</option>
+                                <option>Volvo</option>
+                                <option>M.benz</option>
+                                <option>Volkswagen</option>
+                                <option>DAF</option>
+                                <option>Outros</option>
                                 @if($errors->has('marca'))
                                     <span class="help-block">
                                     <strong>{{ $errors->first('marca') }}</strong>
                                 </span>
                                 @endif
+                                </select>
                             </div>
 
                             <div class="form-group {{ $errors->has('modelo') ? 'has-error' : '' }}">

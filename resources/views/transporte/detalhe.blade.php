@@ -12,7 +12,10 @@
                         <p>
                             <a class="btn btn-info" href="{{route('transporte.listartransporte')}}">Voltar</a>
                         </p>
-                        {{ $transporte }}
+                        <h5>{{ $transporte->nome }}</h5>
+                        <p>{{ $transporte->cnpj }}</p>
+                        <p>{{ $transporte->endereco }}</p>
+                        <p>{{ $transporte->cidade }}</p>
                     </div>
                 </div>
             </div>

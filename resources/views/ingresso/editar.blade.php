@@ -15,70 +15,71 @@
         </div>
     @endif
 
-    <h1>Cadastro Veiculo </h1>
+    <h1>editar ingresso </h1>
 <div class="container">
     <div class="row">
         <div class="col-md-10">
             <div class="panel panel-default">                
                 <div class="panel-body">                                    
-                        <form action="{{route('veiculo.atualizar', $veiculo->id)}}" method="post">
+                    <form action="{{route('veiculo.salvar')}}" method="post">
                         {{ csrf_field() }}
-
-                         
-
                         <div class="form-group {{ $errors->has('Placa') ? 'has-error' : '' }}">
                             <label for="nome">Placa</label>
-                          <input type="text" name="Placa" class="form-control" placeholder="Nome do transporte" value="{{$veiculo->placa}}">
+                            <input type="text" name="Placa" class="form-control" placeholder="Nome do transporte">
                             @if($errors->has('Placa'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('Placa') }}</strong>
                                 </span>
                             @endif
                         </div>
-                    
+                        <div class="form-group {{ $errors->has('Placa') ? 'has-error' : '' }}">
+                            <label for="nome">Placa</label>
+                            <input type="text" name="Placa" class="form-control" placeholder="Nome do transporte">
+                            @if($errors->has('Placa'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('Placa') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                         <div class="form-group {{ $errors->has('Tipo') ? 'has-error' : '' }}">
                             <label for="email">Tipo</label>
-                            <input type="text" name="Tipo" class="form-control" placeholder=" carreta" value="{{$veiculo->tipo}}">
+                            <input type="text" name="Tipo" class="form-control" placeholder=" carreta">
                             @if($errors->has('Tipo'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('Tipo') }}</strong>
                                 </span>
                             @endif
                         </div>
-
                         <div class="form-group{{ $errors->has('Marca')? 'has-error' : '' }}">
                             <label for="endereco">Marca</label>
-                            <input type="text" name="Marca" class="form-control" placeholder="Endereço do Transporte" value="{{$veiculo->marca}}">
+                            <input type="text" name="Marca" class="form-control" placeholder="Endereço do Transporte">
                             @if($errors->has('Marca'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('Marca') }}</strong>
                                 </span>
                             @endif
                         </div>
-
                         <div class="form-group{{ $errors->has('Modelo')? 'has-error' : '' }}">
                             <label for="endereco">Modelo</label>
-                            <input type="text" name="Modelo" class="form-control" placeholder="Cidade" value="{{$veiculo->modelo}}">
+                            <input type="text" name="Modelo" class="form-control" placeholder="Cidade">
                             @if($errors->has('Modelo'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('Modelo') }}</strong>
                                 </span>
                             @endif
                         </div>
-
                         <div class="form-group{{ $errors->has('Peso')? 'has-error' : '' }}">
                             <label for="endereco">Peso</label>
-                            <input type="text" name="Peso" class="form-control" placeholder="Peso" value="{{$veiculo->peso}}">
+                            <input type="text" name="Peso" class="form-control" placeholder="Peso">
                             @if($errors->has('Peso'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('Peso') }}</strong>
                                 </span>
                             @endif
                         </div>
-
                         <div class="form-group{{ $errors->has('Ano')? 'has-error' : '' }}">
                             <label for="endereco">Ano</label>
-                            <input type="text" name="Ano" class="form-control" placeholder="Ano" value="{{$veiculo->ano}}">
+                            <input type="text" name="Ano" class="form-control" placeholder="Ano">
                             @if($errors->has('Ano'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('Ano') }}</strong>

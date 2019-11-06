@@ -14,13 +14,13 @@
             </div>
         </div>
     @endif
-    <h1>Cadastro de Veiculos </h1>
+    <h1>Registrar WMS </h1>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="{{route('ingresso.salvar')}}" method="post">
+                        <form action="{{route('ordemservico.salvar')}}" method="post">
                             {{ csrf_field() }}
 
                            <div class="form-group">
@@ -44,18 +44,21 @@
                            </div>
 
                            <div class="form-group">
-                            <label for="mercadoria">Mercadoria</label>
-                            <input type="text" name="mercadoria" class="form-control" placeholder="Mercadoria">
-                            @if($errors->has('mercadoria'))
+                            <label for="naturezacarga">naturezacarga</label>
+                            <select type="date" name="naturezacarga" class="form-control">
+                                  <option value="1">Baixar Carga</option>
+                                  <option value="2">Transbordo</option>
+                                </select>
+                            @if($errors->has('naturezacarga'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('mercadoria') }}</strong>
+                                    <strong>{{ $errors->first('naturezacarga') }}</strong>
                                 </span>
                             @endif
                            </div>
 
                            <div class="form-group">
-                            <label for="peso">Peso</label>
-                            <input type="text" name="peso" class="form-control" placeholder="Peso">
+                            <label for="valortotal">valor total</label>
+                            <input type="text" name="valortotal" class="form-control" placeholder="valortotal">
                             @if($errors->has('peso'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('peso') }}</strong>
@@ -63,32 +66,16 @@
                             @endif
                            </div>
 
-                           <div class="form-group">
-                            <label for="quantidade">Quantidade</label>
-                            <input type="text" name="quantidade" class="form-control" placeholder="Quantidade">
-                            @if($errors->has('quantidade'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('quantidade') }}</strong>
-                                </span>
-                            @endif
-                           </div>
-                          
-                          <div class="form-group">
-                            <label for="nota_fiscal">Nota Fiscal</label>
-                            <input type="text" name="nota_fiscal" class="form-control" placeholder="Nota Fiscal">
-                            @if($errors->has('nota_fiscal'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('nota_fiscal') }}</strong>
-                                </span>
-                            @endif
-                           </div>
-
                             <div class="form-group">
-                            <label for="conhecimento">Conhecimento</label>
-                            <input type="text" name="conhecimento" class="form-control" placeholder="Conhecimento">
-                            @if($errors->has('conhecimento'))
+                            <label for="status">status</label>
+                            <select type="date" name="status" class="form-control">
+                                  <option value="1">Aberto</option>
+                                  <option value="2">Pendente</option>
+                                  <option value="2">fechado</option>
+                                </select>
+                            @if($errors->has('status'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('conhecimento') }}</strong>
+                                    <strong>{{ $errors->first('status') }}</strong>
                                 </span>
                             @endif
                            </div>
@@ -100,15 +87,6 @@
                                  <option value="{{$c->id}}">{{$c->placa}}</option>
                                 @endforeach
                                </select>
-                            </div>
-
-
-                             <div class="form-group" {{ $errors->has('unidade') ? 'has-error':'' }}>
-                                <label for="unidade_id">Unidade</label>
-                                <select name="unidade_id" id="unidade_id" class="form-control">
-                                  <option value="1">kg</option>
-                                  <option value="2">ton</option>
-                                </select>
                             </div>
 
                             <button class="btn btn-info">Adicionar</button>

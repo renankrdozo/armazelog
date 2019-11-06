@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Armazelog',
+    'title' => '',
 
     'title_prefix' => '',
 
@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'logo' => '<b>Armazelog</b>',
-
+    'logo' => "",
+    'icon'        => "<img src='img/logo.jpg' class='img-rounded img-responsive'>",
     'logo_mini' => '<b>Amz</b>',
 
     /*
@@ -137,17 +137,19 @@ return [
                 [
             'text'        => 'Cadastrar Placas',
             'url'         => 'veiculo/cadastrar',
-            'icon'        => 'list',
+            'icon'        => 'truck',
             'label_color' => 'success',
                 ],
                 [
             'text'        => 'Listar Placas',
-            'url'         => 'listar',
+            'url'         => '/veiculo/listar',
             'icon'        => 'list',
             'label_color' => 'success',
                 ],
             ],
         ],
+
+
         [
             'text'        => 'Registrar Ingresso ',
             'url'         => 'pages',
@@ -158,7 +160,7 @@ return [
                 [
             'text'        => 'Cadastrar Ingresso',
             'url'         => 'ingresso',
-            'icon'        => 'truck',
+            'icon'        => 'fas fa-user',
             'label_color' => 'success',
                 ],
                 [
@@ -172,8 +174,73 @@ return [
 
 
 
+        [
+            'text'        => 'Modulo WMS',
+            'url'         => 'pages',
+            'icon'        => 'dashboard',
+            'label'       => 3,
+            'label_color' => 'success',
+            'submenu' => [
+                [
+            'text'        => 'Cadastrar OS',
+            'url'         => 'ordemservico',
+            'icon'        => 'list',
+            'label_color' => 'success',
+                ],
+                [
+            'text'        => 'Listar OS',
+            'url'         => 'ordemservico/listar',
+            'icon'        => 'list',
+            'label_color' => 'success',
+                ],
+            ],
+        ],
+
+
+
+        [
+            'text'        => 'Registrar Saida',
+            'url'         => 'pages',
+            'icon'        => 'dashboard',
+            'label'       => 4,
+            'label_color' => 'success',
+            'submenu' => [
+                [
+            'text'        => 'Cadastrar Saida',
+            'url'         => ' ',
+            'icon'        => 'truck',
+            'label_color' => 'success',
+                ],
+                [
+            'text'        => 'Listar Saida',
+            'url'         => '',
+            'icon'        => 'list',
+            'label_color' => 'success',
+                ],
+            ],
+            ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    ],
-       
+
     /*
     |--------------------------------------------------------------------------
     | Menu Filters
