@@ -4,10 +4,32 @@
 @stop
 @section('content')
     <h1>Listando Transporte </h1>
+
+    <div class="container">
+       <div class="panel-body"> 
+          <div class="row">
+            <div class="col-md-8"> 
+              <form action="{{route('ingresso.filtro')}}" class="form form-inline" method="POST">
+               {!!  csrf_field()   !!}
+              <input type="id" class="form-control col-md-5" name="id" placeholder="Id">
+              <input type="date" class="form-control" name="data" placeholder="Data">
+              <input type="text" class="form-control" name="mercadoria" placeholder="Mercadoria">
+              <input type="text" class="form-control" name="nota_fiscal" placeholder="Nota fiscal">
+              <input type="text" class="form-control" name="conhecimento" placeholder="Conhecimento">
+               <input type="text" class="form-control" name="veiculo_id" placeholder="Veiculo">
+              <button class="btn btn-success" type="submit">Filtra Consulta</button>
+              </form>
+      
+            </div>     
+          </div>    
+      </div>    
+    </div>
+    <a> </a>
+    <a> </a>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="panel panel-default">
+                <div class="panel panel-default col-md-30">
                     <div class="panel-body">
                         <p>
                             <a class="btn btn-info" href="{{route('ingresso.cadastrar')}}">Adicionar</a>
@@ -22,8 +44,8 @@
                                 <th>Mercadoria</th>
                                 <th>Peso</th>
                                 <th>Quantidade</th>
-                                <th>Nota Fiscal</th>
-                                <th>Conhecimento</th>
+                                <th>N.Fiscal</th>
+                                <th>CRT</th>
                                 <th>Veiculo</th>
                                 <th>Unidade</th>
                                 <th></th>
@@ -58,7 +80,7 @@
                         </table>
 
                         <div align="center">
-
+                             {!! $ingresso->links()  !!}
                         </div>
 
                     </div>

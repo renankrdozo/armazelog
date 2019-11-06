@@ -38,16 +38,23 @@ Route::get('/veiculo/editar/{id_veiculo}','Admin\VeiculoController@editar')->nam
 Route::post('/veiculo/atualizar/{id_veiculo}','Admin\VeiculoController@atualizar')->name('veiculo.atualizar');
 //rota para chamar a view de edição de transportadoras
 Route::get('/veiculo/deletar/{id_veiculo}','Admin\VeiculoController@deletar')->name('veiculo.deletar');
-//rota que salva os dados no banco na tabela de cadastro de transportadoras
-Route::post('gravar','Admin\VeiculoController@gravar')->name('veiculo.gravar');
-//rota que chama a view para efetuar o cadastro no banco de dados
-Route::get('listar','Admin\VeiculoController@listar')->name('veiculo.listar');
+Route::post('/veiculo/gravar','Admin\VeiculoController@gravar')->name('veiculo.gravar');
+Route::get('/veiculo/listar','Admin\VeiculoController@listar')->name('veiculo.listar');
+Route::post('/veiculo/filtro','Admin\VeiculoController@salvar')->name('veiculo.filtro');
 
-//ROTAS REFERENTES AO CADASTRO DE VEICULOS NO BANCO
+//ROTAS REFERENTES AO CADASTRO DE INGRESSO NO BANCO
 //rota chamar a view de cadastro de ingresso
-Route::get('ingresso','Admin\IngressoController@cadastrar')->name('ingresso.cadastrar');
-Route::get('ingresso/listar','Admin\IngressoController@listar')->name('ingresso.listar');
+Route::get('/ingresso/ingresso','Admin\IngressoController@cadastrar')->name('ingresso.cadastrar');
+Route::get('/ingresso/listar','Admin\IngressoController@listar')->name('ingresso.listar');
 Route::post('/ingresso/salvar','Admin\IngressoController@salvar')->name('ingresso.salvar');
+Route::post('/ingresso/filtro','Admin\VeiculoController@salvar')->name('ingresso.filtro');
+
+
+//ROTAS REFERENTES AO CADASTRO DE ORDEM SE SERVICO
+//rota chamar a view de cadastro de ingresso
+Route::get('/ordemservico','Admin\OrdemservicoController@cadastrar')->name('ordemservico.cadastrar');
+Route::get('/ordemservico/listar','Admin\OrdemservicoController@listar')->name('ordemservico.listar');
+Route::post('/ordemservico/salvar','Admin\OrdemservicoController@salvar')->name('ordemservico.salvar');
 
 
 

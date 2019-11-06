@@ -14,10 +14,22 @@
             </div>
         </div>
     @endif
-    <h1>Listando Transporte </h1>
+    <div class="box">
+       <div class="box-header col-md-10">
+            <form action="{{route('veiculo.filtro')}}" class="form form-inline" method="POST">
+               {!!  csrf_field()   !!}
+              <input type="text" class="form-control col-md-5" name="id" placeholder="Id">
+              <input type="text" class="form-control" name="placa" placeholder="Placa">
+              <input type="text" class="form-control" name="marca" placeholder="Marca">
+                <input type="text" class="form-control" name="transporte" placeholder="Transportadora">
+              <button class="btn btn-success" type="submit">Filtra Consulta</button>
+           </form>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                <h2>Listando Transporte </h2>     
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <p>
@@ -61,11 +73,10 @@
 
                             @endforeach
                             </tbody>
-
                         </table>
-
-                        <div align="center">
-
+                        <div>
+                         
+                            {!! $veiculo->links()  !!}
                         </div>
 
                     </div>

@@ -22,9 +22,12 @@ class VeiculoController extends Controller
     }
 
 
+
+
+
     public function listar()
     {
-        $veiculo = Veiculo::paginate(20);
+        $veiculo = Veiculo::paginate(5);
         
         foreach ($veiculo as $item) {
             $item->transporte_nome = Transporte::find($item->transporte_id)->nome;
@@ -32,6 +35,15 @@ class VeiculoController extends Controller
 
         return view('veiculo.listar', compact('veiculo'));
     }
+
+
+
+
+
+
+
+
+
     //funçao que esta salvando os dados no banco na view
     //de cadastro de transportadoras
 
@@ -55,10 +67,24 @@ class VeiculoController extends Controller
 
      
 
+
+
+
+
+
+
+
      public function editar($id_veiculo)
     {
         return view('veiculo.editar', ['veiculo' => Veiculo::findOrFail($id_veiculo)]);
     }
+
+
+
+
+
+
+
 
 
     public function atualizar(Request $request, $id_veiculo)
@@ -72,11 +98,10 @@ class VeiculoController extends Controller
         $veiculo->peso = $request->peso;
         $veiculo->ano = $request->ano;
         $veiculo->save();
-        $veiculo = Transporte::paginate(20);
+        $veiculo = Transporte::paginate(5);
         return view('veiculo.listar', compact('veiculo'))->with('veiculo', $veiculo);
         
     }
-
 
 
 
@@ -92,7 +117,7 @@ class VeiculoController extends Controller
                 'class' => "alert-error"
             ]);
 
-           $veiculo = Veiculo::paginate(20);
+           $veiculo = Veiculo::paginate(5);
             foreach ($veiculo as $item) {
                 $item->transporte_nome = Transporte::find($item->transporte_id)->nome;
             }
@@ -116,6 +141,35 @@ class VeiculoController extends Controller
 
         return view('veiculo.listar', compact('veiculo'));
     }
+
+
+     public function filtro(Request $request)
+    {      
+         //dd($request->all());
+       $dataForm = $request->all();
+       $dataForm = $request->except('_token');
+       $veiculos = $Veiculo ->filtro($dataForm, $this->totalPage);
+      // $type = $veiculos->tipe();
+       return view('veiculo.listar', compact('veiculo'));
+
+    }
+ /**     public function filtro(Request $request)
+    {
+  $id = $request->get('id');
+  $placa = $request->get('placa');
+  $marca = $request->get('marca');
+  $transporte = $request->get('transporte');
+
+  $veiculo = veiculo::orderBy('id', 'DESC')
+        ->id($id)
+        ->placa($placa)
+        ->marca($marca)
+        ->transporte($transporte);
+
+    return view('veiculo.listar', compact('veiculo'));
+
+}
+**/
 
 }
  

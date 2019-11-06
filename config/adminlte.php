@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'logo' => "<img src='img/logo.jpg' class='img-rounded img-responsive'>",
-    'icon'        => 'img/logo.jpg',
+    'logo' => "",
+    'icon'        => "<img src='img/logo.jpg' class='img-rounded img-responsive'>",
     'logo_mini' => '<b>Amz</b>',
 
     /*
@@ -142,12 +142,14 @@ return [
                 ],
                 [
             'text'        => 'Listar Placas',
-            'url'         => 'listar',
+            'url'         => '/veiculo/listar',
             'icon'        => 'list',
             'label_color' => 'success',
                 ],
             ],
         ],
+
+
         [
             'text'        => 'Registrar Ingresso ',
             'url'         => 'pages',
@@ -169,6 +171,9 @@ return [
                 ],
             ],
         ],
+
+
+
         [
             'text'        => 'Modulo WMS',
             'url'         => 'pages',
@@ -178,20 +183,21 @@ return [
             'submenu' => [
                 [
             'text'        => 'Cadastrar OS',
-            'url'         => '',
+            'url'         => 'ordemservico',
             'icon'        => 'list',
             'label_color' => 'success',
                 ],
-           
-
                 [
             'text'        => 'Listar OS',
-            'url'         => '',
+            'url'         => 'ordemservico/listar',
             'icon'        => 'list',
             'label_color' => 'success',
-                ],      
+                ],
             ],
         ],
+
+
+
         [
             'text'        => 'Registrar Saida',
             'url'         => 'pages',
@@ -210,13 +216,13 @@ return [
             'url'         => '',
             'icon'        => 'list',
             'label_color' => 'success',
-                ],      
+                ],
             ],
             ],
-        
-        
-       
-        
+
+
+
+
 
 
 
@@ -234,7 +240,7 @@ return [
 
 
    ],
-       
+
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

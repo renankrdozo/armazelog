@@ -25,7 +25,7 @@ class IngressoController extends Controller
     
     public function listar()
     {
-    	$ingresso = Entrada::all();
+    	$ingresso = Entrada::paginate(05);
         foreach ($ingresso as $item) {
             $item->veiculo_nome = Veiculo::find($item->veiculo_id)->placa;
             $item->unidade_nome = Unidade::find($item->unidade_id)->descricao;
@@ -42,8 +42,20 @@ class IngressoController extends Controller
             'msg' => "Dados cadastrados comsucesso!",
             'class' => "alert-success"
         ]);
-        // return redirect()->route('ingresso.listar');
-        return "salvou";
+         return redirect()->route('ingresso.listar');
+        //return "salvou";
+    }
+
+
+    public function filtro(Request $request)
+    {      
+         //dd($request->all());
+       $dataForm = $request->all();
+       $dataForm = $request->except('_token');
+       $ingresso = $ingresso ->filtro($dataForm, $this->totalPage);
+      // $type = $veiculos->tipe();
+       return view('ingresso.listar', compact('ingresso'));
+
     }
 
 }
